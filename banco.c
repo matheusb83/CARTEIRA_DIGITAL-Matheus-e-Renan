@@ -1,4 +1,3 @@
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,6 +60,22 @@ static void criarConta(Cliente *c, int tipo) {
 static int buscarCliente(Cliente banco[], int t) {
     int num;
     int i;
+
+    printf("Clientes cadastrados:\n");
+    for (i = 0; i < t; i++) {
+        printf("  %d - %s (Contas:", banco[i].numero, banco[i].nome);
+        if (banco[i].contas[CORRENTE].existe) {
+            printf(" 1-Corrente");
+        }
+        if (banco[i].contas[SALARIO].existe) {
+            printf(" 2-Salario");
+        }
+        if (banco[i].contas[POUPANCA].existe) {
+            printf(" 3-Poupanca");
+        }
+        printf(")\n");
+    }
+    printf("\n");
 
     printf("Numero do cliente (ex: 1000): ");
     scanf("%d", &num);
